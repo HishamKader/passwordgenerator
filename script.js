@@ -74,26 +74,38 @@ return password;
   password string. Collects the desired password length
   and the desired password character components.
 */
-
+function collectInput() {
 
   // Get the desired password length from the user.
-  
+  passLengthInput = prompt("Desired passworth length (8-128: ");
   // Validate the user's input to ensure the length requirements are met.
- 
-    // Gently nudge the user in the correct direction
-    
-  // Make our passLengthInput value a valid number.
+  while ((passLengthInput < 8) || (passLengthInput > 128 || (isNaN(passLengthInput)))) {
   
+    // Gently nudge the user in the correct direction
+    passLengthInput = prompt("Desired passsword MUST be a NUMBER between 8-128 chars long!: ")
+  }  
+  // Make our passLengthInput value a valid number.
+  passLengthInput = parseInt(passLengthInput);
+  console.log(`User selected a password length of: ${passlengthInput}`);
+
 
 
   // Ask the user if they want uppercase chars, set hasUppers flag appropriately.
- 
+  hasUppers = confirm("Would you like uppercase characters?");
   // If the user wants lowercase characters add our lowerCase string to the newPassString variable.
+  if (hasUppers) {
+    newPassString += pass.upperCaseChar;
+    console.log("Uppercase selected.");
+  } else {
+    console.log("Uppercase not selected.")
+  }
+  
+
   
 
 
   // Ask the user if they want lower chars, set hasLowers flag appropriately.
-  
+  hasNumbers = confirm("Would")
   // If the user wants lowercase characters add our lowerCase string to the newPassString variable.
   
     // concatenate lowerCase 
@@ -118,7 +130,7 @@ return password;
   // Check to ensure the user selected atleast one of the values from the prompts.
  
 
-}
+
 
 
 /*
