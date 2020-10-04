@@ -20,7 +20,7 @@ const pass = {
 }
 
 // Declare our generateBtn.
-var generateBt = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 // Declare our passwordText box.
 var passwordText = document.querySelector("#password");
 
@@ -34,7 +34,7 @@ var newPassString = "";
   from the generatePassword() method and shows it to the
   user via the passwordText box.
 */
-function writePassword();
+function writePassword() {
 
 // Store the password variable with the returnd value of generatePassword().
 
@@ -43,7 +43,7 @@ var password = generatePassword();
 // Show the user the password in the passwordText box.
 
 passwordText.value = password;
-
+}
 /* 
    generatePassword() concatenates the supplied
    user input to return the password value to
@@ -59,11 +59,12 @@ function generatePassword() {
   collectInput();
 
   // Loop through our newPassString based on the desired lengh of the password.
-  for (i = 0; i < passLengthInput; i++)
+  for (i = 0; i < passLengthInput; i++) {
 
     // Using the contents of the newPassString, randomly assign a character to password variable.
     password += newPassString.charAt(Math.floor(Math.random() * newPassString.length));
-  // Return the password value.
+  }
+    // Return the password value.
   return password;
 
 }
@@ -112,11 +113,11 @@ function collectInput() {
   }
 
   // Ask the user if they want numers, set hasNumbers flag appropriately.
-  hasNUmbers = confirm("Would you like number characters");
+  hasNumbers = confirm("Would you like number characters");
   // If the user wants numbers add our numbers string to the newPassString variable.
   if (hasNumbers) {
     // concatenate numbers value to the newPassString.
-    newPassString = pass.numbersChar;
+    newPassString += pass.numbersChar;
     console.log("Numbers selected");
   } else {
     console.log("Numbers not selected");
@@ -127,14 +128,16 @@ function collectInput() {
   // If the user wants special characters add our special string to the newPassString variable.
   if (hasSpecial) {
     // concatenate special value to the newPassString.
-    newPassString = pass.specialChar;
+    newPassString += pass.specialChar;
     console.log("Spcecial characters selected");
   } else {
     console.log("Special characters not  selected");
   }
 
   // Check to ensure the user selected atleast one of the values from the prompts.
+  evaluateInput();
 
+}
 
 
 
@@ -145,28 +148,30 @@ function collectInput() {
   sends them back to the collectInput() function to
   start over.
 */
-
+function evaluateInput() {
 
 
   // If our user selects no values, send them back to the beginning.
 
-
+  if ((!hasUppers) && (!hasLowers) && (!hasNumbers) && (!hasSpecial)) {
 
     // Alert the user that they did not select one type of input.
-
+    alert("You must select at least one type of input!");
 
     // call the collectInput() function again to get input.
-
-
-
+    collectInput();
+  }
+}
 /*
   The resetPasswordBox() function cleans out
   the password variable so that each time the
   user hits the Generate Password box they
   get a fresh new password.
 */
-
+function resetPasswordBox() {
   // reset the password value to default.
-
-
+  password = "";
+  newPassString = "";
+}
 // Add event listener to generateBtn button to listen for user clicks.
+generateBtn.addEventListener("click", writePassword);
