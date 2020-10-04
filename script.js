@@ -26,7 +26,7 @@ var passwordText = document.querySelector("#password");
 
 // Declare our password variables.
 var passLengthInput, hasUppers, hasLowers, hasNumbers, hasSpecialChars;
-var password ="";
+var password = "";
 var newPassString = "";
 
 /*
@@ -36,13 +36,13 @@ var newPassString = "";
 */
 function writePassword();
 
-  // Store the password variable with the returnd value of generatePassword().
-  
+// Store the password variable with the returnd value of generatePassword().
+
 var password = generatePassword();
 
-  // Show the user the password in the passwordText box.
-  
-  passwordText.value = password;
+// Show the user the password in the passwordText box.
+
+passwordText.value = password;
 
 /* 
    generatePassword() concatenates the supplied
@@ -50,7 +50,7 @@ var password = generatePassword();
    the writePassword() method.
    @return password, the variable containing our password.
 */
-function generatePassword(){
+function generatePassword() {
 
   // Clear out the password value so the user can generate a clean new password.
   resetPasswordBox();
@@ -59,12 +59,12 @@ function generatePassword(){
   collectInput();
 
   // Loop through our newPassString based on the desired lengh of the password.
- for (i =0; i < passLengthInput; i++)
+  for (i = 0; i < passLengthInput; i++)
 
     // Using the contents of the newPassString, randomly assign a character to password variable.
-password += newPassString.charAt(Math.floor(Math.random() * newPassString.length));   
+    password += newPassString.charAt(Math.floor(Math.random() * newPassString.length));
   // Return the password value.
-return password;  
+  return password;
 
 }
 
@@ -80,10 +80,10 @@ function collectInput() {
   passLengthInput = prompt("Desired passworth length (8-128: ");
   // Validate the user's input to ensure the length requirements are met.
   while ((passLengthInput < 8) || (passLengthInput > 128 || (isNaN(passLengthInput)))) {
-  
+
     // Gently nudge the user in the correct direction
-    passLengthInput = prompt("Desired passsword MUST be a NUMBER between 8-128 chars long!: ")
-  }  
+    passLengthInput = prompt("Desired passsword MUST be a NUMBER between 8-128 chars long!: ");
+  }
   // Make our passLengthInput value a valid number.
   passLengthInput = parseInt(passLengthInput);
   console.log(`User selected a password length of: ${passlengthInput}`);
@@ -97,38 +97,44 @@ function collectInput() {
     newPassString += pass.upperCaseChar;
     console.log("Uppercase selected.");
   } else {
-    console.log("Uppercase not selected.")
+    console.log("Uppercase not selected.");
   }
-  
-
-  
-
 
   // Ask the user if they want lower chars, set hasLowers flag appropriately.
-  hasNumbers = confirm("Would")
+  hasLowers = confirm("Would you like lowercase characters");
   // If the user wants lowercase characters add our lowerCase string to the newPassString variable.
-  
+  if (hasLowers) {
     // concatenate lowerCase 
-    
-
+    newPassString += pass.lowerCaseChar;
+    console.log("Lowercase selected.");
+  } else {
+    console.log("Lowercase not selected.");
+  }
 
   // Ask the user if they want numers, set hasNumbers flag appropriately.
- 
+  hasNUmbers = confirm("Would you like number characters");
   // If the user wants numbers add our numbers string to the newPassString variable.
- 
+  if (hasNumbers) {
     // concatenate numbers value to the newPassString.
-    
-
+    newPassString = pass.numbersChar;
+    console.log("Numbers selected");
+  } else {
+    console.log("Numbers not selected");
+  }
 
   // Ask the user if they want numers, set hasSpecialChars flag appropriately.
- 
+  hasSpecialChars = confirm("Would you like special characters");
   // If the user wants special characters add our special string to the newPassString variable.
-  
+  if (hasSpecial) {
     // concatenate special value to the newPassString.
-    
+    newPassString = pass.specialChar;
+    console.log("Spcecial characters selected");
+  } else {
+    console.log("Special characters not  selected");
+  }
 
   // Check to ensure the user selected atleast one of the values from the prompts.
- 
+
 
 
 
@@ -144,16 +150,16 @@ function collectInput() {
 
   // If our user selects no values, send them back to the beginning.
 
- 
+
 
     // Alert the user that they did not select one type of input.
-    
+
 
     // call the collectInput() function again to get input.
-   
-  
 
-/* 
+
+
+/*
   The resetPasswordBox() function cleans out
   the password variable so that each time the
   user hits the Generate Password box they
@@ -161,6 +167,6 @@ function collectInput() {
 */
 
   // reset the password value to default.
-  
+
 
 // Add event listener to generateBtn button to listen for user clicks.
