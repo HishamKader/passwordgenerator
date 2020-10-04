@@ -7,10 +7,9 @@ const pass = {
 }
 
 var generateBtn = document.querySelector("#generate");
-
 var passwordText = document.querySelector("#password");
 
-var passLengthInput, hasUppers, hasLowers, hasNumbers, hasSpecialChars;
+var passLengthInput, hasUppers, hasLowers, hasNumbers, hasSpecial;
 var password = "";
 var newPassString = "";
 
@@ -39,15 +38,15 @@ function generatePassword() {
 
 function collectInput() {
 
-  passLengthInput = prompt("Desired passworth length (8-128: ");
+  passLengthInput = prompt("The password length must be between 8-128: ");
   
-  while ((passLengthInput < 8) || (passLengthInput > 128 || (isNaN(passLengthInput)))) {
+  while ((passLengthInput < 8) || (passLengthInput > 128) || (isNaN(passLengthInput))) {
 
-    passLengthInput = prompt("Desired passsword MUST be a NUMBER between 8-128 chars long!: ");
+    passLengthInput = prompt("Try again, passsword MUST be a NUMBER between 8-128 characters long!: ");
   }
   
   passLengthInput = parseInt(passLengthInput);
-  console.log(`User selected a password length of: ${passlengthInput}`);
+  console.log(`User selected a password length of: ${passLengthInput}`);
 
   hasUppers = confirm("Would you like uppercase characters?");
   
@@ -82,7 +81,7 @@ function collectInput() {
   }
 
   
-  hasSpecialChars = confirm("Would you like special characters");
+  hasSpecial = confirm("Would you like special characters");
   
   if (hasSpecial) {
     
