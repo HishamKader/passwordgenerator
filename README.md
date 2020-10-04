@@ -8,7 +8,7 @@ You may select whether or not to have:
 * Uppercase characters
 * Lowercase characters
 * Numbers
-* Special characters (ex. !@#$ etc).
+* Special characters (ex. !@#$ etc)
 
 You must select at least one option regarding the character components or else you will be taken back to the start of the prompts!
 
