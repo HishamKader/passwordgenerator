@@ -1,24 +1,24 @@
 
 const pass = {
-  upperCaseChar: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 
-  lowerCaseChar: "abcdefghijklmnopqrstuvwxyz", 
-  numbersChar: "0123456789", 
-  specialChar: "!@#$%^&*()_+-={}|[]\:<>?/" ,
+  upperCaseChar: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lowerCaseChar: "abcdefghijklmnopqrstuvwxyz",
+  numbersChar: "0123456789",
+  specialChar: "!@#$%^&*()_+-={}|[]\:<>?/",
 }
 
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
 
-var passLengthInput, hasUppers, hasLowers, hasNumbers, hasSpecial;
+var passLengthInput, Uppers, Lowers, Numbers, Special;
 var password = "";
 var newPassString = "";
 
 
 function writePassword() {
 
-var password = generatePassword();
+  var password = generatePassword();
 
-passwordText.value = password;
+  passwordText.value = password;
 }
 
 function generatePassword() {
@@ -31,82 +31,86 @@ function generatePassword() {
 
     password += newPassString.charAt(Math.floor(Math.random() * newPassString.length));
   }
-    
+
   return password;
 
 }
 
 function collectInput() {
 
-  passLengthInput = prompt("The password length must be between 8-128: ");
-  
+  passLengthInput = prompt("The password length must be between 8-128 ");
+
   while ((passLengthInput < 8) || (passLengthInput > 128) || (isNaN(passLengthInput))) {
 
-    passLengthInput = prompt("Try again, passsword MUST be a NUMBER between 8-128 characters long!: ");
+    passLengthInput = prompt("Try again, passsword must be a number between 8-128 characters");
   }
-  
+
   passLengthInput = parseInt(passLengthInput);
   console.log(`User selected a password length of: ${passLengthInput}`);
 
-  hasUppers = confirm("Would you like uppercase characters?");
-  
-  if (hasUppers) {
-    
+  Uppers = confirm("Would you like Uppercase characters?");
+
+  if (Uppers) {
+
     newPassString += pass.upperCaseChar;
     console.log("Uppercase selected.");
-  } else {
+  }
+  else {
     console.log("Uppercase not selected.");
   }
 
-  
-  hasLowers = confirm("Would you like lowercase characters");
-  
-  if (hasLowers) {
-    
+
+  Lowers = confirm("Would you like Lowercase characters");
+
+  if (Lowers) {
+
     newPassString += pass.lowerCaseChar;
     console.log("Lowercase selected.");
-  } else {
+  } 
+  else {
     console.log("Lowercase not selected.");
   }
 
-  
-  hasNumbers = confirm("Would you like number characters");
-  
-  if (hasNumbers) {
-    
+
+  Numbers = confirm("Would you like Numbers");
+
+  if (Numbers) {
+
     newPassString += pass.numbersChar;
     console.log("Numbers selected");
-  } else {
+  } 
+  else {
     console.log("Numbers not selected");
   }
 
-  
-  hasSpecial = confirm("Would you like special characters");
-  
-  if (hasSpecial) {
-    
+
+  Special = confirm("Would you like Special characters");
+
+  if (Special) {
+
     newPassString += pass.specialChar;
     console.log("Spcecial characters selected");
-  } else {
+  } 
+  else {
     console.log("Special characters not  selected");
   }
 
- evaluateInput();
+  evaluateInput();
 
 }
 
 function evaluateInput() {
 
-  if ((!hasUppers) && (!hasLowers) && (!hasNumbers) && (!hasSpecial)) {
+  if ((!Uppers) && (!Lowers) && (!Numbers) && (!Special)) {
 
-    alert("You must select at least one type of input!");
+    alert("You must select at least one type of input");
 
     collectInput();
   }
 }
 
 function resetPasswordBox() {
-  
+
   password = "";
   newPassString = "";
 }
